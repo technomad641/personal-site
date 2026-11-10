@@ -1,9 +1,16 @@
-<!doctype html><html lang="en"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Rajat Singh</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<!doctype html><html lang="en"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><title>Rajat Singh · Software Engineer, AI infrastructure</title>
 <meta name="description" content="Rajat Singh is a software engineer at Amazon in Seattle, building AI infrastructure, MCP servers and distributed systems.">
+<meta name="author" content="Rajat Singh">
+<link rel="canonical" href="https://personal-site-beta-bice-11.vercel.app/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Rajat Singh, software engineer">
 <meta property="og:description" content="AI infrastructure, MCP servers and distributed systems. Amazon, Seattle.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://personal-site-beta-bice-11.vercel.app/">
+<meta property="og:image" content="https://personal-site-beta-bice-11.vercel.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F1F2F4">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,9 +23,9 @@
   --paper:  #F1F2F4;
   --ink:    #111215;
   --grey:   #5D6067;   /* body on paper */
-  --ghost:  #A3A6AD;   /* second tone of a headline on paper */
+  --ghost:  #7E8189;   /* second tone of a headline on paper (≥3:1 for large text) */
   --mist:   #8B8E95;   /* body on ink */
-  --shade:  #4A4D54;   /* second tone on ink */
+  --shade:  #6A6D74;   /* second tone on ink (≥3:1 for large text) */
   --blue:   #3170DD;
   --rule-l: rgba(17, 18, 21, 0.12);
   --rule-d: rgba(241, 242, 244, 0.12);
@@ -66,14 +73,13 @@ sup { font-size: 0.55em; vertical-align: 0.8em; line-height: 0; margin-left: 0.0
 .two { color: var(--ghost); }
 .ink .two { color: var(--shade); }
 
-/* ---------- announcement bar ---------- */
-.announce {
-  background: var(--ink); color: var(--paper); font-size: var(--t-xs);
-  display: flex; justify-content: center; align-items: center; gap: 10px 16px; flex-wrap: wrap;
-  padding: 10px var(--pad-r) 10px var(--pad);
+/* ---------- skip link ---------- */
+.skip {
+  position: absolute; z-index: 40; left: var(--pad); top: -80px;
+  background: var(--ink); color: var(--paper); font-size: var(--t-s);
+  padding: 12px 16px; border-radius: 10px; transition: top 200ms var(--ease-out);
 }
-.announce a { color: #8FB3F2; white-space: nowrap; }
-.announce a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.skip:focus { top: calc(env(safe-area-inset-top, 0px) + 72px); }
 
 /* ---------- floating pill nav ---------- */
 .nav {
@@ -103,7 +109,7 @@ sup { font-size: 0.55em; vertical-align: 0.8em; line-height: 0; margin-left: 0.0
 @media (max-width: 400px) { .nav .pill a.opt { display: none; } }
 
 /* ---------- hero ---------- */
-.hero { height: min(calc(100svh - 40px), 920px); min-height: 540px; overflow: hidden; display: flex; align-items: flex-end; }
+.hero { height: min(100svh, 960px); min-height: 600px; overflow: hidden; display: flex; align-items: flex-end; }
 .hero canvas {
   position: absolute; inset: 0; width: 100%; height: 100%;
   -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 98%); mask-image: linear-gradient(180deg, #000 55%, transparent 98%);
@@ -113,7 +119,13 @@ sup { font-size: 0.55em; vertical-align: 0.8em; line-height: 0; margin-left: 0.0
 @keyframes focus-in { from { filter: blur(28px); opacity: 0.2; transform: scale(1.04); } }
 .hero-copy { position: relative; width: 100%; padding-bottom: clamp(28px, 6vh, 64px); display: flex; justify-content: space-between; align-items: flex-end; gap: 20px 24px; flex-wrap: wrap; }
 .hero-copy .who { font-size: var(--t-s); }
-.hero h1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem); line-height: 1.12; letter-spacing: -0.015em; margin-top: 6px; max-width: 22ch; }
+.hero h1 { font-size: clamp(2.4rem, 1.3rem + 4vw, 5rem); line-height: 1.02; letter-spacing: -0.035em; margin-top: 8px; max-width: 14ch; }
+.hero .lede { margin-top: 18px; max-width: 34rem; color: var(--grey); font-size: var(--t-m); }
+.hero .btn.fill { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+@media (hover: hover) and (pointer: fine) { .hero .btn:not(.fill):hover { background: rgba(17, 18, 21, 0.06); } }
+.status { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: #2E9E5B; box-shadow: 0 0 0 4px rgba(46, 158, 91, 0.16); }
+@media (min-width: 640px) { .status { justify-content: flex-end; } }
 .hero .meta { font-size: var(--t-xs); color: var(--grey); display: grid; gap: 2px; }
 .hero .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
 @media (min-width: 640px) { .hero .meta { text-align: right; } }
@@ -217,8 +229,8 @@ sup { font-size: 0.55em; vertical-align: 0.8em; line-height: 0; margin-left: 0.0
 .sim { min-width: 0; }
 .seg { display: flex; gap: 6px; flex-wrap: wrap; }
 .seg .tab { color: var(--paper); border-color: rgba(241,242,244,0.35); }
-.seg .tab[aria-selected="true"] { background: var(--paper); color: var(--ink); border-color: var(--paper); }
-@media (hover: hover) and (pointer: fine) { .seg .tab:not([aria-selected="true"]):hover { background: rgba(241,242,244,0.08); } }
+.seg .tab[aria-selected="true"], .seg .tab[aria-pressed="true"] { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+@media (hover: hover) and (pointer: fine) { .seg .tab:not([aria-selected="true"]):not([aria-pressed="true"]):hover { background: rgba(241,242,244,0.08); } }
 .meters { display: grid; gap: 20px; margin-top: 28px; }
 .meter .top { display: flex; justify-content: space-between; gap: 12px; font-size: var(--t-s); color: var(--mist); }
 .meter .top b { font-weight: 400; color: var(--paper); }
@@ -322,25 +334,24 @@ footer.band { padding-block: 56px calc(36px + env(safe-area-inset-bottom, 0px));
   </div>
 </nav>
 
+<a class="skip" href="#work">Skip to work</a>
 <main id="top">
-  <div class="announce" role="note">
-    <span>Open to conversations on agent infrastructure and MCP tooling</span>
-    <a href="#contact">Say hello →</a>
-  </div>
 
   <!-- HERO -->
   <header class="band hero" data-tone="paper">
     <canvas id="orb" aria-hidden="true"></canvas>
     <div class="hero-copy">
       <div>
-        <p class="who rise d1">Rajat Singh</p>
+        <p class="who rise d1">Rajat Singh · Software Engineer</p>
         <h1 class="rise d2">Systems that agents <span class="two">can rely on.</span></h1>
+        <p class="lede rise d2">I build MCP servers and the event-driven AWS services behind them, at Amazon in Seattle.</p>
         <div class="cta rise d3">
           <a class="btn fill" href="#work">See the work <span class="ar" aria-hidden="true">↓</span></a>
           <a class="btn" href="#projects">Browse projects <span class="ar" aria-hidden="true">↗</span></a>
         </div>
       </div>
       <div class="meta rise d3">
+        <a class="status" href="#contact"><i aria-hidden="true"></i>Open to conversations</a>
         <span>Software Engineer II, Amazon</span>
         <span>Seattle, WA · <span id="clock">PT</span></span>
       </div>
@@ -375,12 +386,12 @@ footer.band { padding-block: 56px calc(36px + env(safe-area-inset-bottom, 0px));
       <p class="lbl">Selected</p>
       <div>
         <div class="tabs" role="tablist" aria-label="Amazon projects" id="tabs">
-          <button class="tab" role="tab" id="t-mcp" aria-selected="true" aria-controls="case" data-k="mcp">M<sup>1</sup> MCP server</button>
-          <button class="tab" role="tab" id="t-pkg" aria-selected="false" aria-controls="case" data-k="pkg">P<sup>1</sup> Packaging</button>
-          <button class="tab" role="tab" id="t-sig" aria-selected="false" aria-controls="case" data-k="sig">S<sup>1</sup> Signals</button>
-          <button class="tab" role="tab" id="t-dmg" aria-selected="false" aria-controls="case" data-k="dmg">D<sup>1</sup> Damage</button>
-          <button class="tab" role="tab" id="t-ins" aria-selected="false" aria-controls="case" data-k="ins">H<sup>1</sup> Insights</button>
-          <button class="tab" role="tab" id="t-srv" aria-selected="false" aria-controls="case" data-k="srv">H<sup>2</sup> Surveys</button>
+          <button class="tab" role="tab" id="t-mcp" aria-selected="true" aria-controls="case" data-k="mcp">MCP server</button>
+          <button class="tab" role="tab" id="t-pkg" aria-selected="false" aria-controls="case" data-k="pkg">Packaging</button>
+          <button class="tab" role="tab" id="t-sig" aria-selected="false" aria-controls="case" data-k="sig">Signals</button>
+          <button class="tab" role="tab" id="t-dmg" aria-selected="false" aria-controls="case" data-k="dmg">Damage</button>
+          <button class="tab" role="tab" id="t-ins" aria-selected="false" aria-controls="case" data-k="ins">Insights</button>
+          <button class="tab" role="tab" id="t-srv" aria-selected="false" aria-controls="case" data-k="srv">Surveys</button>
         </div>
         <div class="case" id="case" role="tabpanel" aria-labelledby="t-mcp"></div>
       </div>
@@ -555,7 +566,10 @@ footer.band { padding-block: 56px calc(36px + env(safe-area-inset-bottom, 0px));
   };
   const draw = () => {
     ctx.clearRect(0, 0, W, H);
-    const R = Math.min(W * 0.4, H * 0.3), cx = W / 2, cy = H * 0.47;
+    /* phones: a smaller orb tucked top-right so it never sits behind the headline */
+    const narrow = W < 640;
+    const R = narrow ? Math.min(W * 0.34, H * 0.18) : Math.min(W * 0.36, H * 0.3);
+    const cx = narrow ? W * 0.62 : W * 0.62, cy = narrow ? H * 0.27 : H * 0.42;
     const cY = Math.cos(rotY), sY = Math.sin(rotY), rx = -0.25 + my, cX = Math.cos(rx), sX = Math.sin(rx);
     const out = [], dens = Math.min(1, 0.55 + R / 600);   /* fewer pixels per point on small screens: thin it out */
     for (const [x, y, z, hot] of pts) {
